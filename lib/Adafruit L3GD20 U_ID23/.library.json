@@ -1,0 +1,46 @@
+{
+    "description": "Unified sensor driver for the L3GD20 Gyroscope", 
+    "repository": {
+        "url": "https://github.com/adafruit/Adafruit_L3GD20_U", 
+        "type": "git"
+    }, 
+    "platforms": [
+        "atmelavr", 
+        "atmelsam", 
+        "espressif8266", 
+        "intel_arc32", 
+        "microchippic32", 
+        "nordicnrf51", 
+        "teensy", 
+        "timsp430"
+    ], 
+    "export": {
+        "exclude": [
+            "extras", 
+            "docs", 
+            "tests", 
+            "test", 
+            "*.doxyfile", 
+            "*.pdf"
+        ], 
+        "include": null
+    }, 
+    "authors": [
+        {
+            "maintainer": true, 
+            "name": "Adafruit", 
+            "url": null, 
+            "email": "info@adafruit.com"
+        }
+    ], 
+    "keywords": [
+        "sensors"
+    ], 
+    "id": 23, 
+    "name": "Adafruit L3GD20 U", 
+    "frameworks": [
+        "arduino"
+    ], 
+    "version": "1.1.0", 
+    "homepage": null
+}

@@ -1,0 +1,39 @@
+{
+    "description": "A library that makes working with ultrasonic sensors easy.", 
+    "repository": {
+        "url": "https://bitbucket.org/teckel12/arduino-new-ping", 
+        "type": "git"
+    }, 
+    "platforms": [
+        "atmelavr"
+    ], 
+    "export": {
+        "exclude": [
+            "extras", 
+            "docs", 
+            "tests", 
+            "test", 
+            "*.doxyfile", 
+            "*.pdf"
+        ], 
+        "include": null
+    }, 
+    "authors": [
+        {
+            "maintainer": true, 
+            "name": "Tim Eckel", 
+            "url": null, 
+            "email": "tim@leethost.com"
+        }
+    ], 
+    "keywords": [
+        "sensors"
+    ], 
+    "id": 176, 
+    "name": "NewPing", 
+    "frameworks": [
+        "arduino"
+    ], 
+    "version": "1.9.0", 
+    "homepage": "https://bitbucket.org/teckel12/arduino-new-ping/wiki/Home"
+}

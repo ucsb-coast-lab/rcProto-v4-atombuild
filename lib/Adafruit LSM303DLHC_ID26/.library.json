@@ -1,0 +1,46 @@
+{
+    "description": "Unified sensor driver for Adafruit's LSM303 Breakout (Accelerometer + Magnetometer)", 
+    "repository": {
+        "url": "https://github.com/adafruit/Adafruit_LSM303DLHC", 
+        "type": "git"
+    }, 
+    "platforms": [
+        "atmelavr", 
+        "atmelsam", 
+        "espressif8266", 
+        "intel_arc32", 
+        "microchippic32", 
+        "nordicnrf51", 
+        "teensy", 
+        "timsp430"
+    ], 
+    "export": {
+        "exclude": [
+            "extras", 
+            "docs", 
+            "tests", 
+            "test", 
+            "*.doxyfile", 
+            "*.pdf"
+        ], 
+        "include": null
+    }, 
+    "authors": [
+        {
+            "maintainer": true, 
+            "name": "Adafruit", 
+            "url": null, 
+            "email": "info@adafruit.com"
+        }
+    ], 
+    "keywords": [
+        "sensors"
+    ], 
+    "id": 26, 
+    "name": "Adafruit LSM303DLHC", 
+    "frameworks": [
+        "arduino"
+    ], 
+    "version": "1.0.3", 
+    "homepage": null
+}

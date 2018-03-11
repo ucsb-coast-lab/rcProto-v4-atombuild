@@ -29,6 +29,7 @@
  3.7 24 Feb 2018: added motor.setSpeed(160) and .run commands to main loop outside of XBee if loop for testing
                   Motor still isn't working
 
+ 4.0 11 Mar 2018: Took out XBee related things because we switched it out to Radio module.
 TODO
   * Periodically check that all sensors are online and reading as expected
 
@@ -57,7 +58,7 @@ TODO
 #define DBG_COMMS false
 #define GPSECHO  false
 #define BBBECHO  false
-#define XBECHO  false
+//#define XBECHO  false
 #define WAITFORGPS false
 
 
@@ -73,7 +74,7 @@ const int pinSpeedo = A0; // dc motor on rear axle for speedometer
 
 // ----------------------- Comm Settings -----------------------
 serialIO BBB(&Serial3); // Beablebone Black
-serialIO XBee(&Serial2); // XBee radio
+//serialIO XBee(&Serial2); // XBee radio
 Adafruit_GPS GPS(&Serial1);  // Adafruit GPS breakout
 boolean usingInterrupt = true;
 void useInterrupt(boolean);
@@ -253,7 +254,7 @@ void setup() {
   Serial.begin(115200);
   delay(500);
 
-  XBee.begin(115200);
+  //XBee.begin(115200);
   BBB.begin(57600);  // Can't get 115200 to work
   GPS.begin(9600);
 
@@ -398,7 +399,7 @@ void loop() {
   //    setThrottle(BBB.desired_thrust);
   //    setSteering(BBB.desired_rudder);
   //  }
-
+/*
   if (XBee.newMSGreceived()) {
     if (DBG_COMMS)
       Serial.println(XBee.lastMSG());
@@ -414,7 +415,8 @@ void loop() {
     setThrottle(XBee.desired_thrust * 20);
     setSteering(XBee.desired_rudder);
   }
-  else if (t_n * 1000 - manualTimer > manualTimeout) {
+  else */
+  if (t_n * 1000 - manualTimer > manualTimeout) {
     // Remote commands are stale.
     mode.flags.manual = false;
 

@@ -96,7 +96,7 @@ SIGNAL(TIMER0_COMPA_vect) {
   //   looks for new serial data, and stores it
   char c = BBB.read();
   char g = GPS.read();
-  char x = XBee.read();
+  //char x = XBee.read();
 
 #ifdef UDR0
   if (BBBECHO)
@@ -105,8 +105,8 @@ SIGNAL(TIMER0_COMPA_vect) {
   if (GPSECHO)
     if (g) UDR0 = g;
 
-  if (XBECHO)
-    if (x) UDR0 = x;
+//  if (XBECHO)
+//    if (x) UDR0 = x;
 #endif
 }
 

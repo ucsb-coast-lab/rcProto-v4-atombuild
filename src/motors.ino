@@ -1,5 +1,16 @@
 #include <Arduino.h>
 
+void motor_setup() {
+  // initialize motor controls to pins
+  steer.attach(pinServo);
+  steer.write(steerC);
+
+  throttle.attach(9);
+  throttle.writeMicroseconds(1500);
+
+}
+
+/*
 // --------------------------------------------
 void motorsStart() {
   // Initialize motor controls
@@ -41,7 +52,23 @@ void setThrottle(int desired_thrust) {
     throttle->setSpeed(0);
 
 }
+*/
 
+// --------------------------------------------
+
+void setThrottle(int desired_thrust) {
+
+  int mapped_thrust = map(desired_thrust, -255, 255, 1200, 1800);
+  if (DBG_COMMS) {
+    Serial.print("-->Setting thrust: "); Serial.print(desired_thrust);
+    Serial.print(" mapped to: ");
+    Serial.println(mapped_thrust);
+  }
+
+  throttle.writeMicroseconds(mapped_thrust);
+
+
+}
 // --------------------------------------------
 void setSteering(int desired_rudder) {
   // set rudder to specified angle
@@ -56,3 +83,4 @@ void setSteering(int desired_rudder) {
   steer.write(mapped_rudder);
 
 }
+//*/

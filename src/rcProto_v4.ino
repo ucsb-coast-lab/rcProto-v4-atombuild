@@ -30,10 +30,16 @@
                   Motor still isn't working
 
  4.0 11 Mar 2018: Took out XBee related things because we switched it out to Radio module.
+                  Switched to treating thrust motor as servo because motorshield library was not working
+                  Thrust motor works now.
+                  Commented out a lot of main loop for testing purposes in the process.
 TODO
   * Periodically check that all sensors are online and reading as expected
 
 */
+
+//PIN numbers: kA = 3, kB  = 4
+//kA and A4(PIN 10, servo) are from the Arduino and kB and B4(Aileron) are from the receiver
 
 
 // ----------------------- Includes -----------------------
@@ -55,7 +61,7 @@ TODO
 
 
 // ----------------------- Debugging Flags -----------------------
-#define DBG_COMMS false
+#define DBG_COMMS true
 #define GPSECHO  false
 #define BBBECHO  false
 //#define XBECHO  false
@@ -94,13 +100,14 @@ double wheelD = 8.25; // in cm
 
 // ----------------------- Motors -----------------------
 // --- Throttle
-Adafruit_MotorShield AFMS = Adafruit_MotorShield();
-Adafruit_DCMotor *throttle = AFMS.getMotor(4); // Port M1 thru M4
+//Adafruit_MotorShield AFMS = Adafruit_MotorShield();
+//Adafruit_DCMotor *throttle = AFMS.getMotor(4); // Port M1 thru M4
 
 int desired_thrust = 255;
 
 // --- Steering
 Servo steer; // servo object for front steering
+Servo throttle; //servo object for back thrust
 // Calibration points
 // 90 is center
 int steerC = 90;
@@ -266,7 +273,7 @@ void setup() {
   useInterrupt(usingInterrupt);
 
   // --- Peripherals ---
-  motorsStart();
+  motor_setup();
   gpsStart();
   imuStart();
 
@@ -329,8 +336,8 @@ void setup() {
 // =======================================================
 void loop() {
 
-  throttle->setSpeed(160);
-  throttle->run(FORWARD);
+  setThrottle(200);
+  //throttle->run(FORWARD);
 
   // Use potentiometers to adjust whatnot
   pot1 = (analogRead(A1) + 1); ///1023.*3. - 1.46)*VOLTS_TO_RPM;
@@ -416,28 +423,28 @@ void loop() {
     setSteering(XBee.desired_rudder);
   }
   else */
-  if (t_n * 1000 - manualTimer > manualTimeout) {
-    // Remote commands are stale.
-    mode.flags.manual = false;
-
-    // If MOOS isn't engaged, post allstop
-    // For now: we know MOOS isn't engaged...
-    if (true)
-    {
-      mode.flags.allstop = true;
-      digitalWrite(pinTaillights, HIGH);
-      //setThrottle(160);
-    }
-  }
-
-  // Maintain timers for wraparound
-  if (manualTimer > t_n)  manualTimer = millis();
-  if (t_nm1 > t_n)  t_nm1 = millis();
-  if (commTimer > t_n)  commTimer = millis();
-
-  if ((t_n - commTimer) > commWait) {
-    serialPrint('S');
-    commTimer = millis();
-  }
+  // if (t_n * 1000 - manualTimer > manualTimeout) {
+  //   // Remote commands are stale.
+  //   mode.flags.manual = false;
+  //
+  //   // If MOOS isn't engaged, post allstop
+  //   // For now: we know MOOS isn't engaged...
+  //   if (true)
+  //   {
+  //     mode.flags.allstop = true;
+  //     digitalWrite(pinTaillights, HIGH);
+  //     //setThrottle(160);
+  //   }
+  // }
+  //
+  // // Maintain timers for wraparound
+  // if (manualTimer > t_n)  manualTimer = millis();
+  // if (t_nm1 > t_n)  t_nm1 = millis();
+  // if (commTimer > t_n)  commTimer = millis();
+  //
+  // if ((t_n - commTimer) > commWait) {
+  //   serialPrint('S');
+  //   commTimer = millis();
+  // }
 
 }

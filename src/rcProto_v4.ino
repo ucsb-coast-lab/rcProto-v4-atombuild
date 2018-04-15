@@ -35,7 +35,6 @@
                   Commented out a lot of main loop for testing purposes in the process.
 TODO
   * Periodically check that all sensors are online and reading as expected
-
 */
 
 //PIN numbers: kA = 3, kB  = 4

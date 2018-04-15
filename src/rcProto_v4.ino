@@ -40,6 +40,9 @@ TODO
 
 //PIN numbers: kA = 3, kB  = 4
 //kA and A4(PIN 10, servo) are from the Arduino and kB and B4(Aileron) are from the receiver
+//A3(Pin 9), B3 from the receiver
+//AUX1 goes to switch F
+//GEAR goes to switch A
 
 
 // ----------------------- Includes -----------------------

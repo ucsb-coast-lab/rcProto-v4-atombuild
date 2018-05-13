@@ -72,12 +72,13 @@ TODO
 
 // ----------------------- Pins -----------------------
 // --- Digital
-const int pinServo = 10; // AF motorshield "servo2" is mapped to pin 9
-const int pinLamps = 6; // Headlights
-const int pinTaillights = 5; // brakelights
-const int pinPing = 4;  // 40kHz acoustic ranger
+const int pinSteer = 10; // Set up steering servo on pin 10
+const int pinThrottle = 9; //Setup throttle motor as servo, writeMicroseconds to change speed
+//const int pinLamps = 6; // Headlights
+//const int pinTaillights = 5; // brakelights
+//const int pinPing = 4;  // 40kHz acoustic ranger
 // --- Analog
-const int pinSpeedo = A0; // dc motor on rear axle for speedometer
+//const int pinSpeedo = A0; // dc motor on rear axle for speedometer
 
 
 // ----------------------- Comm Settings -----------------------
@@ -105,7 +106,7 @@ double wheelD = 8.25; // in cm
 //Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 //Adafruit_DCMotor *throttle = AFMS.getMotor(4); // Port M1 thru M4
 
-int desired_thrust = 255;
+int desired_thrust;
 
 // --- Steering
 Servo steer; // servo object for front steering
@@ -119,8 +120,8 @@ int steerL = 0;
 
 // ----------------------- Ranger -----------------------
 // collision avoidance
-NewPing ranger(pinPing, pinPing, 400);  // sig, rx, maximum distance in cm
-unsigned int objRange;                  // distance to obstacle (in cm)
+//NewPing ranger(pinPing, pinPing, 400);  // sig, rx, maximum distance in cm
+//unsigned int objRange;                  // distance to obstacle (in cm)
 
 
 // ----------------------- Timers -----------------------
@@ -270,8 +271,8 @@ void setup() {
   GPS.begin(9600);
 
   // Indicator lights
-  pinMode(pinTaillights, OUTPUT);
-  pinMode(pinLamps, OUTPUT);
+  //pinMode(pinTaillights, OUTPUT);
+  //pinMode(pinLamps, OUTPUT);
 
   // Establish comms polling via TIMER0
   useInterrupt(usingInterrupt);
@@ -331,7 +332,7 @@ void setup() {
   // Ready to go.
   mode.flags.allstop = false;
   // Turn on headlights
-  digitalWrite(pinLamps, HIGH);
+  //digitalWrite(pinLamps, HIGH);
   Serial.println("Finished setup.");
 
 }

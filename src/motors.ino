@@ -2,11 +2,11 @@
 
 void motor_setup() {
   // initialize motor controls to pins
-  steer.attach(pinServo);
+  steer.attach(pinSteer);
   steer.write(steerC);
 
-  throttle.attach(9);
-  throttle.writeMicroseconds(1500);
+  throttle.attach(pinThrottle);
+  throttle.writeMicroseconds(1500); //force throttle to begin at dead stop
 
 }
 

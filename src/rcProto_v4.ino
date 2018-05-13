@@ -68,7 +68,7 @@ TODO
 #define GPSECHO  false
 #define BBBECHO  false
 //#define XBECHO  false
-#define WAITFORGPS true
+#define WAITFORGPS false
 
 
 // ----------------------- Pins -----------------------

@@ -41,7 +41,7 @@ void serialPrint(char msgType) {
         String msg = "#W,T" + String(millis()) + \
                      ",V" + String(sqrt(pow(velE, 2) + pow(velN, 2))) + \
                      ",RPM" + String(rpm_now, 2) + \
-                     ",A0" + String(analogRead(pinSpeedo));
+                     ",A0" + String("0");//analogRead(pinSpeedo));
         msg = appendChecksum(msg);
         Serial.print(msg);
         return;

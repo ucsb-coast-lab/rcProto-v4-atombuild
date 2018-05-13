@@ -291,10 +291,10 @@ void setup() {
   while (GPS.latitude == 0 && WAITFORGPS) {
     if (n == 0)
       Serial.write("Waiting for GPS fix.");
-    digitalWrite(pinTaillights, HIGH);
+    //digitalWrite(pinTaillights, HIGH);
 
     delay(100);
-    digitalWrite(pinTaillights, LOW);
+    //digitalWrite(pinTaillights, LOW);
     delay(900);
     gpsParse();
     Serial.print(".");
@@ -374,8 +374,8 @@ void loop() {
   roll = 0.99f * roll + 0.01f * fastroll;
 
   // --- Velocity
-  rpm_last = rpm_now;
-  rpm_now = ((double)analogRead(pinSpeedo) - 613.0f) / 1023.0f * 0.2f * 60.0f;
+  //rpm_last = rpm_now;
+  //rpm_now = ((double)analogRead(pinSpeedo) - 613.0f) / 1023.0f * 0.2f * 60.0f;
   //if (abs(rpm) < 3)
   //rpm = 0;
 

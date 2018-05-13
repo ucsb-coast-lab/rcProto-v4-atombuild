@@ -5,7 +5,7 @@ void motor_setup() {
   steer.attach(pinSteer);
   steer.write(steerC);
 
-  throttle.attach(pinThrottle);
+  throttle.attach(pinThrottle); //attach throttle motor
   throttle.writeMicroseconds(1500); //force throttle to begin at dead stop
 
 }

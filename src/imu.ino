@@ -15,7 +15,7 @@ void imuStart() {
 
   if (!mag.begin()) {
     /* There was a problem detecting the LSM303 ... check your connections */
-    Serial.println("IMU: Warning. Magnetomete may not be present.");
+    Serial.println("IMU: Warning. Magnetometer may not be present.");
     //while (1);
   }
   //mag.setMagGain(LSM303_MAGGAIN_8_1);

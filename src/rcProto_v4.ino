@@ -33,7 +33,7 @@
                   Switched to treating thrust motor as servo because motorshield library was not working
                   Thrust motor works now.
                   Commented out a lot of main loop for testing purposes in the process.
-		  Commented out headlights/taillights as they are unused.
+		              Commented out headlights/taillights as they are unused.
 TODO
   * Periodically check that all sensors are online and reading as expected
 */

@@ -35,7 +35,6 @@ void serialPrint(char msgType) {
                      ",HDG" + String(heading, 1);
         msg = appendChecksum(msg);
         Serial.print(msg);
-        BBB.print(msg);
         return;
       }
     case 'W': { // Wheel debugging

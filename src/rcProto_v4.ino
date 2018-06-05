@@ -266,9 +266,13 @@ void setup() {
   // --- Comms ---
   Serial.begin(115200);
   delay(500);
+  Serial.println("Serial0 iniialized.");
 
   //XBee.begin(115200);
-  BBB.begin(57600);  // Can't get 115200 to work
+  BBB.begin(115200);  // Can't get 57600 to work
+  delay(500);
+  Serial.println("Serial3 initialized");
+
   GPS.begin(9600);
 
   // Indicator lights
@@ -341,6 +345,8 @@ void setup() {
 
 // =======================================================
 void loop() {
+
+  Serial.println("Begin loop.");
 
   // Use potentiometers to adjust whatnot
   pot1 = (analogRead(A1) + 1); ///1023.*3. - 1.46)*VOLTS_TO_RPM;
@@ -450,5 +456,6 @@ void loop() {
   //   commTimer = millis();
   // }
 
-serialPrint('N');
+  Serial.println("Begin print.");
+  serialPrint('N');
 }

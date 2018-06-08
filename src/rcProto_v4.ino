@@ -346,7 +346,7 @@ void setup() {
 // =======================================================
 void loop() {
 
-  Serial.println("Begin loop.");
+  //Serial.println("Begin loop.");
 
   // Use potentiometers to adjust whatnot
   pot1 = (analogRead(A1) + 1); ///1023.*3. - 1.46)*VOLTS_TO_RPM;
@@ -456,6 +456,6 @@ void loop() {
   //   commTimer = millis();
   // }
 
-  Serial.println("Begin print.");
+  //Serial.println("Begin print.");
   serialPrint('N');
 }

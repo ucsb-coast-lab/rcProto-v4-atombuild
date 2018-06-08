@@ -34,7 +34,7 @@ void serialPrint(char msgType) {
                      ",VEL" + String(sqrt(pow(velE, 2) + pow(velN, 2))) + \
                      ",HDG" + String(heading, 1);
         msg = appendChecksum(msg);
-        Serial.print(msg);
+        //Serial.print(msg);
         Serial3.print(msg);
         return;
       }
